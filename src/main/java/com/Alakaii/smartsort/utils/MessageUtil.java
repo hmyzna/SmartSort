@@ -14,7 +14,9 @@ public class MessageUtil {
     
     public void sendMessage(CommandSender sender, String key) {
         String message = plugin.getConfig().getString("messages." + key, "&cMessage not found: " + key);
-        sender.sendMessage(colorize(message));
+        if (!message.isEmpty()) {
+            sender.sendMessage(colorize(message));
+        }
     }
     
     public String colorize(String message) {
